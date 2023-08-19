@@ -1,4 +1,4 @@
-# ---- Algoritmos --- Busca Linear
+# ---- Algoritmos --- 
 
 numPar = [2, 8, 16, 24, 6, 14, 18, 30]
 valor = int(input('Digite um numero para buscar: '))
