@@ -32,7 +32,41 @@ class ContaCorrente(ContaBancaria):
             print(f'Voce sacou {valor} da sua conta.')
             print(f'Seu saldo atual e {saldo}')
             return saldo - valor
+
+class ContaPoupanca(ContaBancaria):
+    def __init__(self, tipo, cliente, saldo):
+        super().__init__(tipo, cliente)
+        self.tipo = 'Poupanca'
+        self.cliente = cliente
+        self.saldo = 0   
+
+    def deposito(valor):
+        saldo =+ valor
     
+    def saque(valor, saldo):
+        if valor > saldo:
+            print('Voce nao tem saldo suficiente para esta operacao!')
+        else:
+            saldo = saldo - valor
+
+class ContaUniversitaria(ContaBancaria):
+    def __init__(self, tipo, cliente, saldo):
+        super().__init__(tipo, cliente)
+        self.tipo = 'Universitaria'
+        self.cliente = cliente
+        self.saldo = 0
+    
+    def deposito(valor):
+        saldo =+ valor
+    
+    def saque(valor):
+        if valor > 200:
+            print('Limite excedido de saque!')
+        elif valor > 200 and valor > saldo:
+            print('Voce nao tem saldo suficiente para saque e limite excedido!')
+        else:
+            saldo = valor - saldo
+        
 
 cliente = input('Digite seu nome: ')
 
@@ -62,7 +96,8 @@ if tipoConta == 1:
 
         while tipoOperacao != 4:
             if tipoOperacao == 1:
-                input('Você deseja cartao de credito? ')
+                input('Você deseja cartao de credito?')
+                
                 break
             elif tipoOperacao == 2:
                 input('Você deseja depositar?')
@@ -76,8 +111,50 @@ if tipoConta == 1:
             else:
                 input('Operacao invalida')
     
-    if operar == 2:
+    elif operar == 2:
         print('Obrigado por utilizar os servicos!')
+    
+    else:
+        print('Opcao invalida!')
 
+if tipoConta == 2:
+    newCliente = ContaPoupanca(tipoConta, cliente, 0)
+    saldo = 0
+    print('Deseja operar sua conta?')
+    print('1. Sim')
+    print('2. Nao')
+    operar = int(input())
 
-        
+    if operar == 1:
+        print('Escolha a opcao desejada: ')
+        print('1. Deposito')
+        print('2. Saque')
+        print('3. Sair')
+        tipoOperacao = int(input())
+    
+    elif operar == 2:
+        print('Obrigado por utilizar os servicos')
+    
+    else:
+        print('Opcao invalida!')
+
+if tipoConta == 3:
+    newCliente = ContaUniversitaria(tipoConta, cliente, 0)
+    saldo = 0
+    print('Deseja operar sua conta?')
+    print('1. Sim')
+    print('2. Nao')
+    operar = int(input())
+
+    if operar == 1:
+        print('Escolha a opcao desejada: ')
+        print('1. Deposito')
+        print('2. Saque')
+        print('3. Sair')
+        tipoOperacao = int(input())
+    
+    elif operar == 2:
+        print('Obrigado por utilizar os servicos')
+    
+    else:
+        print('Opcao invalida!')
